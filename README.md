@@ -6,10 +6,62 @@ Env Setup
 
 Pod
 ````
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-app
+  labels:
+    app: juiceshopapp
+spec:
+  containers:
+  - image: "bkimminich/juice-shop"
+    name: juiceshopapp-image
+    ports:
+    - containerPort: 3000
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: juiceshopapp
+spec:
+  selector:
+    app: secure-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
 ````
 
 Service
 ````
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-app
+  labels:
+    app: juiceshopapp
+spec:
+  containers:
+  - image: "bkimminich/juice-shop"
+    name: juiceshopapp-image
+    ports:
+    - containerPort: 3000
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: juiceshopapp
+spec:
+  selector:
+    app: secure-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
 ````
 
 Ingress
