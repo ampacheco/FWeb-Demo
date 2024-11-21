@@ -29,7 +29,7 @@ metadata:
   name: juiceshopapp
 spec:
   selector:
-    app: secure-app
+    app: juiceshopapp
   ports:
   - protocol: TCP
     port: 80
